@@ -211,7 +211,7 @@ public class Main {
                 myArray[i] *= 2;
             }
         }
-            System.out.println(Arrays.toString(myArray));
+        System.out.println(Arrays.toString(myArray));
     }
     //13
     public static void squareTwoDimensionalArray() {
@@ -235,8 +235,8 @@ public class Main {
         System.out.println(Arrays.toString(myArray));
         return myArray;
     }
-
 }
+
 
 
 
