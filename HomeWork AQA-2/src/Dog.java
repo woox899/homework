@@ -1,10 +1,11 @@
 public class Dog extends Animal {
     private int runningRestriction = 500;
     private int swimmingRestriction = 10;
-
     private static int instatceCount = 0;
+    String name;
 
-    public Dog() {
+    public Dog(String name) {
+        this.name = name;
         instatceCount++;
     }
 

@@ -1,18 +1,19 @@
 public class Cat extends Animal {
     private int runningRestriction = 200;
     private static int instatceCount = 0;
-    boolean hungry = true;
+    String name;
+    boolean catIsHungry;
+    int amountOfFoodEaten;
 
-    public Cat() {
+    public Cat(String name, boolean catIsHungry, int amountOfFoodEaten) {
+        this.name = name;
+        this.catIsHungry = catIsHungry;
+        this.amountOfFoodEaten = amountOfFoodEaten;
         instatceCount++;
     }
 
     public static int getInstatceCount() {
         return instatceCount;
-    }
-
-    public void eat() {
-
     }
 
     @Override
@@ -30,5 +31,9 @@ public class Cat extends Animal {
     @Override
     void swim(int lengthOfObstacleSwim) {
         System.out.println("Кот не умеет плавать");
+    }
+
+    public void theCatAte(Bowl bowl) {
+        bowl.removeFromBowl(amountOfFoodEaten);
     }
 }

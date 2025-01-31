@@ -1,8 +1,16 @@
 public class Bowl {
-    private int amountOfFood = 0;
+     int amountOfFood;
 
-    public void addFoodToBowl(int food) {
-            amountOfFood += food;
-            System.out.println("В миске " + amountOfFood + " еды");
-        }
+     public Bowl(int amountOfFood) {
+         this.amountOfFood = amountOfFood;
+     }
+
+     void refillTheBowl(int food) {
+        amountOfFood += food;
+         System.out.println("В миску положили " + food + " еды. В миске теперь " + amountOfFood + " еды");
     }
+
+     void removeFromBowl(int food) {
+         amountOfFood -= food;
+    }
+}
