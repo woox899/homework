@@ -1,28 +1,23 @@
-public class PerimeterAndAreaOfARectangle implements IPerimeterAndAreaOfARectangle {
+public class PerimeterAndAreaOfARectangle implements IGeometricFigure {
     String borderColor;
     String fillColor;
-    double firstSide;
-    double secondSide;
+    private double firstSide;
+    private double secondSide;
 
     public PerimeterAndAreaOfARectangle(String borderColor, String fillColor, double firstSide, double secondSide) {
         this.borderColor = borderColor;
         this.fillColor = fillColor;
         this.firstSide = firstSide;
         this.secondSide = secondSide;
-
-        System.out.println("У прямоугольника " + borderColor + " цвет границы и " + fillColor + " цвет фона.");
-
-        perimeterOfARectangle(firstSide, secondSide);
-        areaOfARectangle(firstSide, secondSide);
     }
 
     @Override
-    public double perimeterOfARectangle(double firstSide, double secondSide) {
-        return IPerimeterAndAreaOfARectangle.super.perimeterOfARectangle(firstSide, secondSide);
+    public double calculatePerimeter() {
+        return 2 * (firstSide + secondSide);
     }
 
     @Override
-    public double areaOfARectangle(double firstSide, double secondSide) {
-        return IPerimeterAndAreaOfARectangle.super.areaOfARectangle(firstSide, secondSide);
+    public double calculateArea() {
+        return firstSide * secondSide;
     }
 }

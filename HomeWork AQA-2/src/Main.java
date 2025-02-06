@@ -18,7 +18,6 @@ public class Main {
         for (Cat cat : cats) {
             if (cat.catIsHungry && cat.amountOfFoodEaten < bowl.amountOfFood) {
                 cat.theCatAte(bowl);
-                cat.catIsHungry = false;
                 System.out.println(cat.name + " - покушал");
             } else {
                 System.out.println(cat.name + " - не хватило корма");
@@ -38,7 +37,7 @@ public class Main {
         PerimeterAndAreaOfACircle circle = new PerimeterAndAreaOfACircle(
                 "синий",
                 "красный",
-                12);
+                10);
 
         PerimeterAndAreaOfARectangle rectangle = new PerimeterAndAreaOfARectangle(
                 "оранжевый",
@@ -52,6 +51,15 @@ public class Main {
                 21,
                 12,
                 14);
+
+        System.out.println("Круг, цвет ганицы - " + circle.borderColor + ", цвет фона - " + circle.fillColor +
+                ", периметр - " + circle.calculatePerimeter() + ", площадь - " + circle.calculateArea());
+
+        System.out.println("Прямоугольник, цвет ганицы - " + rectangle.borderColor + ", цвет фона - " + rectangle.fillColor +
+                ", периметр - " + rectangle.calculatePerimeter() + ", площадь - " + rectangle.calculateArea());
+
+        System.out.println("Треугольник, цвет ганицы - " + triangle.borderColor + ", цвет фона - " + triangle.fillColor +
+                ", периметр - " + triangle.calculatePerimeter() + ", площадь - " + triangle.calculateArea());
     }
 }
 

@@ -1,25 +1,21 @@
-public class PerimeterAndAreaOfACircle implements IPerimeterAndAreaOfACircle {
+public class PerimeterAndAreaOfACircle implements IGeometricFigure {
     String borderColor;
     String fillColor;
-    double radius;
+    private double radius;
 
     public PerimeterAndAreaOfACircle(String borderColor, String fillColor, double radius) {
         this.borderColor = borderColor;
         this.fillColor = fillColor;
-
-        System.out.println("У круга " + borderColor + " цвет границы и " + fillColor + " цвет фона.");
-
-        perimeterOfACircle(radius);
-        areaOfACircle(radius);
+        this.radius = radius;
     }
 
     @Override
-    public double perimeterOfACircle(double radius) {
-        return IPerimeterAndAreaOfACircle.super.perimeterOfACircle(radius);
+    public double calculatePerimeter() {
+        return 2 * 3.14 * radius;
     }
 
     @Override
-    public double areaOfACircle(double radius) {
-        return IPerimeterAndAreaOfACircle.super.areaOfACircle(radius);
+    public double calculateArea() {
+        return 3.14 * radius * radius;
     }
 }

@@ -35,5 +35,6 @@ public class Cat extends Animal {
 
     public void theCatAte(Bowl bowl) {
         bowl.removeFromBowl(amountOfFoodEaten);
+        catIsHungry = false;
     }
 }

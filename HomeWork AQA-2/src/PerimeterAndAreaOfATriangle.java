@@ -1,4 +1,4 @@
-public class PerimeterAndAreaOfATriangle implements IPerimeterAndAreaOfATriangle {
+public class PerimeterAndAreaOfATriangle implements IGeometricFigure {
     String borderColor;
     String fillColor;
     double firstSide;
@@ -11,20 +11,16 @@ public class PerimeterAndAreaOfATriangle implements IPerimeterAndAreaOfATriangle
         this.firstSide = firstSide;
         this.secondSide = secondSide;
         this.thirdSide = thirdSide;
-
-        System.out.println("У треугольника " + borderColor + " цвет границы и " + fillColor + " цвет фона.");
-
-        perimeterOfATriangle(firstSide, secondSide, thirdSide);
-        areaOfATriangle(firstSide, secondSide, thirdSide);
     }
 
     @Override
-    public double perimeterOfATriangle(double firstSide, double secondSide, double thirdSide) {
-        return IPerimeterAndAreaOfATriangle.super.perimeterOfATriangle(firstSide, secondSide, thirdSide);
+    public double calculatePerimeter() {
+        return firstSide + secondSide + thirdSide;
     }
 
     @Override
-    public double areaOfATriangle(double firstSide, double secondSide, double thirdSide) {
-        return IPerimeterAndAreaOfATriangle.super.areaOfATriangle(firstSide, secondSide, thirdSide);
+    public double calculateArea() {
+        double s = calculatePerimeter() / 2;
+        return Math.sqrt(s * (s - firstSide) * (s - secondSide) * (s - thirdSide));
     }
 }
