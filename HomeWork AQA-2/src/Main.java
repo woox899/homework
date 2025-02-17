@@ -1,179 +1,41 @@
 import java.util.Arrays;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import static java.lang.Integer.parseInt;
+
 public class Main {
-    public static void main(String[] args) {
-//        printThreeWords();
-//        checkSumSign();
-//        printColor();
-//        compareNumbers();
-//        checkAmount(10, 9);
-//        positiveOrNegative(-1);
-//        positiveOrNegativeBoolean(1);
-//        howManyTimesWillItPrint(3, "Hello");
-//        whatYear(404);
-//        reverseNumbers();
-//        arrayOfLength100();
-//        lessThan6MultiplyBy2();
-//        squareTwoDimensionalArray();
-//        twoArguments(3, 18);
+    public static void main(String[] args) throws MyArraySizeException, MyArrayDataException {
 
+        String[][] goodArray = {{"1", "2", "3", "4"}, {"5", "6", "7", "8"}, {"9", "10", "11", "12"},
+                {"13", "14", "15", "16"}};
 
+        String[][] badSizeArray = {{"1", "2", "3"}, {"5", "6", "7"}, {"9", "10", "11"}};
 
+        String[][] badDataArray = {{"1", "2", "3", "4"}, {"5", "6", "7", "8"}, {"9", "Bazz", "11", "12"},
+                {"13", "14", "15", "16"}};
 
+        System.out.println(sumElements(goodArray));
+//        System.out.println(sumElements(badSizeArray));
+//        System.out.println(sumElements(badDataArray));
     }
 
-    // 1
-    public static void printThreeWords() {
-        System.out.println("Orange");
-        System.out.println("Banana");
-        System.out.println("Apple");
-    }
-
-    //2
-    public static void checkSumSign() {
-        int a = 2;
-        int b = 2;
-
-        if (a + b >= 0) {
-            System.out.println("Сумма положительная");
-        } else {
-            System.out.println("Сумма отрицательная");
+    public static int sumElements(String[][] inputArray) throws MyArrayDataException, MyArraySizeException {
+        if (inputArray.length != 4 || inputArray[0].length != 4) {
+            throw new MyArraySizeException(inputArray.length, inputArray[0].length);
         }
-    }
-
-    //3
-    public static void printColor() {
-        int value = 100;
-        if (value <= 0) {
-            System.out.println("Красный");
-        }
-        if (value > 0 && value <= 100) {
-            System.out.println("Желтый");
-        }
-        if (value > 100) {
-            System.out.println("Зеленый");
-        }
-    }
-
-    //4
-    public static void compareNumbers() {
-        int a = 3;
-        int b = 2;
-
-        if (a >= b) {
-            System.out.println("a >= b");
-        } else if (a < b) {
-            System.out.println("a < b");
-        }
-    }
-
-    //5
-    public static boolean checkAmount(int a, int b) {
-        boolean answer = false;
         int sum = 0;
-        sum = a + b;
-        if (sum >= 10 && sum <= 20) answer = true;
-        else answer = false;
-        System.out.println(answer);
-        return answer;
-    }
-
-    //6
-    public static void positiveOrNegative(int someInt) {
-        if (someInt < 0) {
-            System.out.println("Число отрицательное");
-        } else if (someInt >= 0) {
-            System.out.println("Число положительное");
-        }
-    }
-
-    //7
-    public static boolean positiveOrNegativeBoolean(int someInt) {
-        boolean answer = false;
-        if (someInt >= 0) answer = false;
-        else answer = true;
-        System.out.println(answer);
-        return answer;
-    }
-
-    //8
-    public static void howManyTimesWillItPrint(int numberOfIterations, String someString) {
-        for (int i = 0; i < numberOfIterations; i++) {
-            System.out.println(someString);
-        }
-    }
-
-    //9
-    public static boolean whatYear(int year) {
-        boolean answer = false;
-        if (year % 400 == 0) {
-            answer = true;
-        } else if (year % 100 == 0) {
-            answer = false;
-        } else if (year % 4 == 0) {
-            answer = true;
-        }
-        System.out.println(answer);
-        return answer;
-    }
-
-    //10
-    public static void reverseNumbers() {
-        int[] myArray = {0, 0, 1, 1};
-        for (int i = 0; i < myArray.length; i++) {
-            if (myArray[i] == 0) {
-                myArray[i] = 1;
-            } else if (myArray[i] == 1) {
-                myArray[i] = 0;
-            }
-        }
-        System.out.println(Arrays.toString(myArray));
-    }
-
-    //11
-    public static void arrayOfLength100() {
-        int[] myArray = new int[100];
-        for (int i = 0; i < myArray.length; i++) {
-            myArray[i] = i + 1;
-        }
-        System.out.println(Arrays.toString(myArray));
-    }
-
-    //12
-    public static void lessThan6MultiplyBy2() {
-        int[] myArray = {1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1};
-        for (int i = 1; i < myArray.length; i++) {
-            if (myArray[i] < 6) {
-                myArray[i] *= 2;
-            }
-        }
-            System.out.println(Arrays.toString(myArray));
-    }
-    //13
-    public static void squareTwoDimensionalArray() {
-        int[][] myArray = new int[5][5];
-        for (int i = 0; i < myArray.length; i++) {
-            for (int j = 0; j < myArray[i].length; j++) {
-                if (myArray[i] == myArray[j]) {
-                    myArray[i][j] = 1;
+        for(int i = 0; i < inputArray.length; i++) {
+            for (int j = 0; j < inputArray[0].length; j++) {
+                try {
+                    sum += Integer.parseInt(inputArray[i][j]);
+                } catch (NumberFormatException e) {
+                    throw new MyArrayDataException(i, j, inputArray[i][j]);
                 }
-                System.out.print(myArray[i][j] + " ");
             }
-            System.out.println();
         }
-    }
-    //14
-    public static int[] twoArguments(int len, int initialValue) {
-        int[] myArray = new int[len];
-        for (int i = 0; i < len; i++) {
-            myArray[i] = initialValue;
-        }
-        System.out.println(Arrays.toString(myArray));
-        return myArray;
+        return sum;
     }
 }
+
 
 
 
