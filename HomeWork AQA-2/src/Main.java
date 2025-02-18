@@ -13,18 +13,28 @@ public class Main {
         String[][] badDataArray = {{"1", "2", "3", "4"}, {"5", "6", "7", "8"}, {"9", "Bazz", "11", "12"},
                 {"13", "14", "15", "16"}};
 
-        System.out.println(sumElements(goodArray));
+        String[][] badSizeArray1 = {{"1","2","3","4"}, {"1","2","3","4","5"}, {"1","2","3","4"}, {"1","2","3","4"}};
+
+        System.out.println(sumElements(badSizeArray1));
 //        System.out.println(sumElements(badSizeArray));
 //        System.out.println(sumElements(badDataArray));
+//        System.out.println(sumElements(goodArray));
     }
 
     public static int sumElements(String[][] inputArray) throws MyArrayDataException, MyArraySizeException {
-        if (inputArray.length != 4 || inputArray[0].length != 4) {
-            throw new MyArraySizeException(inputArray.length, inputArray[0].length);
+        if (inputArray.length != 4) {
+            throw new MyArraySizeException(inputArray.length, -1);
         }
+
+        for(int i = 0; i < inputArray.length; i++) {
+            if(inputArray[i].length != 4) {
+                throw new MyArraySizeException(inputArray.length, inputArray[i].length);
+            }
+        }
+
         int sum = 0;
         for(int i = 0; i < inputArray.length; i++) {
-            for (int j = 0; j < inputArray[0].length; j++) {
+            for (int j = 0; j < inputArray[i].length; j++) {
                 try {
                     sum += Integer.parseInt(inputArray[i][j]);
                 } catch (NumberFormatException e) {
