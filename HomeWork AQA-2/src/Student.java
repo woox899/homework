@@ -5,19 +5,30 @@ public class Student {
     private String name = "";
     private String group = "";
     private int course = 0;
+    private Map<String, Integer> gradesForSubjects = new HashMap<>();
 
-    // коллекция предметов и оценок
-    Map<String, Integer> gradesForSubjects = new HashMap<>();
+    Student(String name, String group, int course, Map<String, Integer> gradesForSubjects) {
+        this.name = name;
+        this.group = group;
+        this.course = course;
+        this.gradesForSubjects = gradesForSubjects;
+    }
 
-    void appendSubjectAndGrade(String subject, Integer grade) {
-        gradesForSubjects.put(subject, grade);
+    public int getCourse() {
+        return course;
+    }
+
+    public void setCourse(int course) {
+        this.course = course;
     }
 
     boolean getGPA() {
-        int gpa = 0;
+        double tmp = 0;
+        double gpa = 0;
         boolean answer = false;
-        for (int value: gradesForSubjects.values()) {
-            gpa += value / gradesForSubjects.size();
+        for (int value : gradesForSubjects.values()) {
+            tmp += value;
+            gpa = tmp / gradesForSubjects.size();
         }
         if (gpa < 3) {
             answer = true;
@@ -26,27 +37,4 @@ public class Student {
         }
         return answer;
     }
-
-    //добавление предметов и оценок
-//    void appendSubjectAndGrade() {
-//        gradesForSubjects.put("Math", 5);
-//        gradesForSubjects.put("Phis", 4);
-//        gradesForSubjects.put("Geo", 5);
-//
-//        int gpa = 0;
-//        for (int value: gradesForSubjects.values()) {
-//            gpa += value / gradesForSubjects.size();
-//        }
-//        System.out.println(gpa);
-//    }
-
-    //переписать под словарь
-    // метод принимает словарь и суммирует его значения потом делит на количество = средний балл
-
-    Student(String name, String group, int course) {
-        this.name = name;
-        this.group = group;
-        this.course = course;
-    }
-
 }
