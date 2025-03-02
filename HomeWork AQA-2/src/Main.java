@@ -22,20 +22,30 @@ public class Main {
         students.add(studentMichael);
         students.add(studentJohn);
 
-        removeStudent(students);
-        transferToTheNextCourse(students);
-
-        System.out.println(students);
+//        removeStudent(students);
+//        transferToTheNextCourse(students);
+//        printStudents(students, 1);
+        students.forEach(System.out::println);
     }
-
+    // Удаление студента
     public static void removeStudent(Set<Student> students) {
         students.removeIf(student -> student.getGPA());
     }
 
+    // Перевод на следующий курс
     public static void transferToTheNextCourse(Set<Student> students) {
         for(Student student : students) {
             if(!student.getGPA()) {
                 student.setCourse(student.getCourse() + 1);
+            }
+        }
+    }
+
+    // Принт имени студента
+    public static void printStudents(Set<Student> students, int course) {
+        for(Student student : students) {
+            if (course == student.getCourse()) {
+                System.out.println(student.getName());
             }
         }
     }

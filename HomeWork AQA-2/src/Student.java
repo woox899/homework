@@ -14,6 +14,10 @@ public class Student {
         this.gradesForSubjects = gradesForSubjects;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public int getCourse() {
         return course;
     }
@@ -36,5 +40,12 @@ public class Student {
             answer = false;
         }
         return answer;
+    }
+    @Override
+    public String toString() {
+        return "name='" + name +
+                ", group='" + group +
+                ", course=" + course +
+                ", grades=" + gradesForSubjects;
     }
 }
