@@ -26,21 +26,16 @@ public class Student {
         this.course = course;
     }
 
-    boolean getGPA() {
+    double getGPA() {
         double tmp = 0;
         double gpa = 0;
-        boolean answer = false;
         for (int value : gradesForSubjects.values()) {
             tmp += value;
             gpa = tmp / gradesForSubjects.size();
         }
-        if (gpa < 3) {
-            answer = true;
-        } else if (gpa >= 3) {
-            answer = false;
-        }
-        return answer;
+        return gpa;
     }
+
     @Override
     public String toString() {
         return "name='" + name +

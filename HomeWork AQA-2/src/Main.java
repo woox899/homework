@@ -24,7 +24,7 @@ public class Main {
 //        removeStudent(students);
 //        transferToTheNextCourse(students);
 //        printStudents(students, 1);
-//        students.forEach(System.out::println);
+        students.forEach(System.out::println);
 
 
         PhoneDirectoryClass phoneDirectory = new PhoneDirectoryClass();
@@ -43,13 +43,13 @@ public class Main {
 
     // Удаление студента
     public static void removeStudent(Set<Student> students) {
-        students.removeIf(student -> student.getGPA());
+        students.removeIf(student -> student.getGPA() < 3 );
     }
 
     // Перевод на следующий курс
     public static void transferToTheNextCourse(Set<Student> students) {
         for (Student student : students) {
-            if (!student.getGPA()) {
+            if (student.getGPA() >= 3) {
                 student.setCourse(student.getCourse() + 1);
             }
         }
